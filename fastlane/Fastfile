@@ -1,12 +1,9 @@
 ###
-###  Android
+###  PR Android
 ###
 
-platform :android do
-  desc "Pull Request verification"
-  lane :pull_request_verification do
-    gradle(project_dir: ".", task: "clean lintDebug test")
-
-  end
+desc "Pull Request verification"
+lane :pull_request_verification do
+gradle(project_dir: ".", task: "clean lintDebug test")
 
 end

@@ -15,6 +15,7 @@ jobs:
 
       # Gems for Fastlane
       -   name: Cache ruby gems dependencies
+          id: cache-gem
           uses: actions/cache@v2
           env:
             keyPath: ${{ runner.os }}-gems
@@ -23,7 +24,7 @@ jobs:
             key: ${{ env.keyPath }}-${{ hashFiles('Gemfile.lock') }}
             restore-keys: ${{ env.keyPath }}
       -   name: Install gem dependencies
-          if: steps.cache.outputs.cache-hit != 'true'
+          if: steps.cache-gem.outputs.cache-hit != 'true'
           run: bundle config set path '~/.gem' && bundle install
       -   name: Cache gradle dependences
           uses: actions/cache@v2

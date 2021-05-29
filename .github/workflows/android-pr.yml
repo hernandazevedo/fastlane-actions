@@ -37,4 +37,4 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
             GITHUB_USER: ${{ secrets.REPO_USER }}
-          run: bundle exec fastlane android pull_request_verification
+          run: bundle exec fastlane pull_request_verification

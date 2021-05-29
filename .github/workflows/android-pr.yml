@@ -23,6 +23,7 @@ jobs:
             key: ${{ env.keyPath }}-${{ hashFiles('Gemfile.lock') }}
             restore-keys: ${{ env.keyPath }}
       -   name: Install gem dependencies
+          if: steps.cache.outputs.cache-hit != 'true'
           run: bundle config set path '~/.gem' && bundle install
       -   name: Cache gradle dependences
           uses: actions/cache@v2
